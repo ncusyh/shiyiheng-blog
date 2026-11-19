@@ -1,0 +1,1 @@
+{"dependencies":{"express":"^4.21.2","multer":"^1.4.5-lts.1"},"description":"shi 的个人博客（深夜代码风格），带管理后台：可随时更换首页图片、发布文章。部署到 shiyiheng.top。","engines":{"node":">=22"},"main":"server.js","name":"shiyiheng-blog","scripts":{"dev":"node server.js","start":"node server.js"},"version":"1.0.0"}

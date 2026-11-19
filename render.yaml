@@ -1,0 +1,14 @@
+# 备选方案：Render（若不用 Railway，可用此文件）
+# Render 的免费实例没有持久磁盘，SQLite + uploads 会在重启后丢失，
+# 只适合试用；正式用请选 Railway + Volume，或 VPS/Docker（见 README）。
+services:
+  - type: web
+    name: shiyiheng-blog
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000

@@ -1,0 +1,10 @@
+"$schema" = "https://railway.app/railway.schema.json"
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+[deploy]
+startCommand = "node server.js"
+restartPolicyType = "ON_FAILURE"
+# 注意：持久化磁盘不能只靠 railway.toml 声明，必须在 Railway 网页端
+# 给服务添加 Volume 并挂载到 /app/data（见 README 第 3 步），
+# 否则服务重启/重新部署后 SQLite 数据库和 uploads/ 里的图片会丢失。
