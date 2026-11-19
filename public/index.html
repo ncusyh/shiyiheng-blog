@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>shi 的博客 — shiyiheng.top</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="dot"></span><span id="brandName">shi 的博客</span> <small id="brandDomain">shiyiheng.top</small></div>
+  <nav class="tabs">
+    <button class="tab active" data-tab="preview">预览博客</button>
+    <button class="tab" data-tab="articles">文章管理</button>
+    <button class="tab" data-tab="settings">首页与设置</button>
+  </nav>
+</header>
+<main class="wrap">
+
+  <!-- ③ 预览博客（访客视角） -->
+  <section id="tab-preview">
+    <div class="hero">
+      <div class="termbar"><i></i><i></i><i></i><span id="termUrl">shiyiheng.top</span></div>
+      <img id="heroImg" class="hero-img" alt="首页大图" src="">
+      <div class="hero-body">
+        <h1><span id="heroName">shi 的博客</span> <span class="cursor"></span></h1>
+        <p class="tagline" id="heroTagline"></p>
+        <p class="about" id="heroAbout"></p>
+      </div>
+    </div>
+    <div class="card">
+      <h2>文章</h2>
+      <p class="hint">点击文章读全文。按标签筛选只显示已发布的文章。</p>
+      <div id="tagFilters" class="row" style="margin-bottom:14px"></div>
+      <div id="articleList"></div>
+    </div>
+    <div id="reader" class="card reader hidden">
+      <div class="row" style="justify-content:space-between"><h2 id="readerTitle"></h2><button class="btn ghost" id="closeReader">关闭</button></div>
+      <div class="meta" id="readerMeta"></div>
+      <img id="readerCover" class="cover hidden" alt="封面图">
+      <div id="readerBody"></div>
+    </div>
+  </section>
+
+  <!-- ② 文章管理 -->
+  <section id="tab-articles" class="hidden">
+    <div class="card">
+      <h2 id="editorTitle">写新文章</h2>
+      <p class="hint">正文空一行即分段。先存草稿可以慢慢改，点「正式发布」后访客就能在首页看到。</p>
+      <form id="articleForm">
+        <input type="hidden" id="articleId">
+        <label for="aTitle">标题 *</label>
+        <input id="aTitle" required maxlength="120" placeholder="例如：我是如何搭起这个博客的">
+        <label for="aSummary">摘要</label>
+        <input id="aSummary" maxlength="200" placeholder="一句话介绍这篇文章">
+        <label for="aTags">标签（用逗号分隔）</label>
+        <input id="aTags" placeholder="例如：建站, 前端, 复盘">
+        <label for="aCover">封面图（可选）</label>
+        <input id="aCover" type="file" accept="image/png,image/jpeg,image/webp,image/gif">
+        <div id="coverPreview" class="hint"></div>
+        <label for="aBody">正文</label>
+        <textarea id="aBody" placeholder="在这里写正文，空一行分段……"></textarea>
+        <div class="row" style="margin-top:16px">
+          <button type="button" class="btn ghost" id="saveDraft">存为草稿</button>
+          <button type="button" class="btn" id="publishBtn">正式发布</button>
+          <button type="button" class="btn ghost" id="resetForm">清空</button>
+        </div>
+      </form>
+    </div>
+    <div class="card">
+      <h2>全部文章</h2>
+      <p class="hint">包含草稿和已发布。点标题可编辑，删除后无法恢复。</p>
+      <div id="adminList"></div>
+    </div>
+  </section>
+
+  <!-- ① 首页与设置 -->
+  <section id="tab-settings" class="hidden">
+    <div class="card">
+      <h2>首页大图</h2>
+      <p class="hint">随时上传新图片替换首页图，也可以恢复默认图。图片会保存在服务器 uploads/ 目录。</p>
+      <img id="settingsHero" class="cover" alt="当前首页图">
+      <div class="row">
+        <input id="heroFile" type="file" accept="image/png,image/jpeg,image/webp,image/gif" style="flex:1">
+        <button class="btn" id="uploadHero">上传并替换</button>
+        <button class="btn ghost" id="resetHero">恢复默认图</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>博客信息</h2>
+      <form id="settingsForm">
+        <label for="sName">博客名称</label>
+        <input id="sName" maxlength="60">
+        <label for="sTagline">一句话签名</label>
+        <input id="sTagline" maxlength="120">
+        <label for="sAbout">关于我</label>
+        <textarea id="sAbout" style="min-height:100px" maxlength="500"></textarea>
+        <div class="row" style="margin-top:16px"><button class="btn" type="submit">保存设置</button></div>
+      </form>
+      <p class="hint" style="margin-top:14px">域名：<span id="settingsDomain">shiyiheng.top</span>（在服务器环境变量或数据库里改，一般不用动）</p>
+    </div>
+  </section>
+
+</main>
+<div id="toast" class="toast hidden"></div>
+<script src="/app.js"></script>
+</body>
+</html>
